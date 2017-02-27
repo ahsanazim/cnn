@@ -42,11 +42,35 @@ def create_rep_mat(words, hot_vec_dict, r_size):
         i += 1
     return mat
 
-def get_rep_mat(seq):
-    words = word_seq(seq, 3)
-    hot_vec_dict = create_dict('ACGT')
-    rep_mat = create_rep_mat(words, hot_vec_dict, 2)
+def get_rep_mat(seq, hot_vec_dict, k=3, r_size=2):
+    words = word_seq(seq, k)
+    rep_mat = create_rep_mat(words, hot_vec_dict, r_size)
     return rep_mat
+
+def get_rep_mats(seqs):
+    rep_mats = []
+    hot_vec_dict = create_dict('ACGT')
+    for seq in seqs:
+        rep_mat = get_rep_mat(seq, hot_vec_dict)
+        rep_mats.append(rep_mat)
+    return rep_mats
+
+def conv_labels(labels, dataset='splice'):
+    converted = []
+    for label in labels:
+        if dataset == 'splice':
+            if label == 'EI':
+                converted.append(0)
+            elif label == 'IE':
+                converted.append(1)
+            elif label == 'N':
+                converted.append(2)
+        elif dataset == 'promoter':
+            if label =='+':
+                converted.append(0)
+            elif label == '-':
+                converted.append(1)
+    return converted
 
 if __name__ == "__main__":
     # running on a test sequence matching example in paper
