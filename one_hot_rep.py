@@ -51,7 +51,7 @@ def get_rep_mats(seqs):
     rep_mats = []
     hot_vec_dict = create_dict('ACGT')
     for seq in seqs:
-        rep_mat = get_rep_mat(seq, hot_vec_dict)
+        rep_mat = get_rep_mat(seq, hot_vec_dict, k=3, r_size=1)
         rep_mats.append(rep_mat)
     return rep_mats
 

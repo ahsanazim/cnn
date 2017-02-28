@@ -1,6 +1,7 @@
+# for `main`
 from one_hot_rep import get_rep_mats, conv_labels
 
-def read(fname):
+def load_data(fname):
     seqs = []
     labels = []
     f = open(fname)
@@ -23,7 +24,7 @@ def read(fname):
 
 if __name__ == "__main__":
     # reading in splice junction input data and converting to required format
-    seqs, labels = read("./splice.data.txt")
+    seqs, labels = load_data("./splice.data.txt")
     lbls_mod = conv_labels(labels)
     seqs_mod = get_rep_mats(seqs)
     print len(seqs_mod)
