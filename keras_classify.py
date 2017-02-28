@@ -48,7 +48,7 @@ Y_test = np_utils.to_categorical(y_test, 3)
 model = Sequential()
 
 model.add(Convolution2D(54, 3, 3, activation='relu', input_shape=(1, 58, 64)))
-print model.output_shape    # (None, 54, 55, 0)
+print model.output_shape
 model.add(Convolution2D(54, 3, 3, activation='relu'))
 print model.output_shape
 model.add(MaxPooling2D(pool_size=(2,2)))
@@ -65,37 +65,17 @@ model.compile(loss='categorical_crossentropy',
                 metrics=['accuracy'])
 
 # 6. Fit model on training data
-model.fit(X_train, Y_train,
-              batch_size=32, nb_epoch=10, verbose=1)
+model.fit(X_train, Y_train,validation_data=(X_test,Y_test),
+              batch_size=32, nb_epoch=5, verbose=1)
 
 # 7. Evaluate model on test data
-score = model.evaluate(X_test, Y_test, verbose=0)
+score = model.evaluate(X_test, Y_test,show_accuracy=True, verbose=1)
 
 
-""" preliminary results:
-
+"""
+debug output:
 (2872, 58, 64)
 (2872, 1, 58, 64)
 (None, 54, 56, 62)
 (None, 54, 54, 60)
-Epoch 1/10
-2872/2872 [==============================] - 64s - loss: 0.3239 - acc: 0.8771
-Epoch 2/10
-2872/2872 [==============================] - 62s - loss: 0.0963 - acc: 0.9694
-Epoch 3/10
-2872/2872 [==============================] - 62s - loss: 0.0721 - acc: 0.9788
-Epoch 4/10
-2872/2872 [==============================] - 62s - loss: 0.0269 - acc: 0.9916
-Epoch 5/10
-2872/2872 [==============================] - 62s - loss: 0.0231 - acc: 0.9909
-Epoch 6/10
-2872/2872 [==============================] - 65s - loss: 0.0227 - acc: 0.9920
-Epoch 7/10
-2872/2872 [==============================] - 63s - loss: 0.0143 - acc: 0.9951
-Epoch 8/10
-2872/2872 [==============================] - 66s - loss: 0.0196 - acc: 0.9944
-Epoch 9/10
-2872/2872 [==============================] - 69s - loss: 0.0122 - acc: 0.9972
-Epoch 10/10
-2872/2872 [==============================] - 68s - loss: 0.0169 - acc: 0.9944
 """
