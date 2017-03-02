@@ -1,5 +1,35 @@
 # Convolutional Neural Networks for DNA Sequence Classification
 
+NOTE that this readme is currently a mish-mash of results and links of interest. It shall be cleaned up in the future. 
+
+***Update***: Apparently using one convolutional layer provides a record highest accuracy: 
+```
+Train on 2872 samples, validate on 318 samples
+Epoch 1/10
+2872/2872 [==============================] - 27s - loss: 0.3015 - acc: 0.8886 - val_loss: 0.0680 - val_acc: 0.9686
+Epoch 2/10
+2872/2872 [==============================] - 25s - loss: 0.0932 - acc: 0.9708 - val_loss: 0.1497 - val_acc: 0.9434
+Epoch 3/10
+2872/2872 [==============================] - 27s - loss: 0.0486 - acc: 0.9857 - val_loss: 0.1792 - val_acc: 0.9497
+Epoch 4/10
+2872/2872 [==============================] - 26s - loss: 0.0286 - acc: 0.9906 - val_loss: 0.1179 - val_acc: 0.9591
+Epoch 5/10
+2872/2872 [==============================] - 26s - loss: 0.0195 - acc: 0.9941 - val_loss: 0.2257 - val_acc: 0.9434
+Epoch 6/10
+2872/2872 [==============================] - 26s - loss: 0.0152 - acc: 0.9962 - val_loss: 0.2719 - val_acc: 0.9340
+Epoch 7/10
+2872/2872 [==============================] - 26s - loss: 0.0131 - acc: 0.9965 - val_loss: 0.2638 - val_acc: 0.9434
+Epoch 8/10
+2872/2872 [==============================] - 28s - loss: 0.0158 - acc: 0.9934 - val_loss: 0.2412 - val_acc: 0.9465
+Epoch 9/10
+2872/2872 [==============================] - 32s - loss: 0.0152 - acc: 0.9955 - val_loss: 0.2302 - val_acc: 0.9528
+Epoch 10/10
+2872/2872 [==============================] - 29s - loss: 0.0189 - acc: 0.9913 - val_loss: 0.2926 - val_acc: 0.9340
+318/318 [==============================] - 0s
+
+score = [0.29261739331783737, 0.9339622619017115]
+```
+
 A preliminary result on the splice junction dataset (where our CNN is performing best):
 
 ```

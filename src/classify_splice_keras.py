@@ -49,7 +49,7 @@ model = Sequential()
 
 model.add(Convolution2D(54, 3, 3, activation='relu', input_shape=(1, 58, 64)))
 print model.output_shape
-model.add(Convolution2D(54, 3, 3, activation='relu'))
+#model.add(Convolution2D(54, 3, 3, activation='relu'))      # commented out -- hence only one convolutional layer
 print model.output_shape
 model.add(MaxPooling2D(pool_size=(2,2)))
 model.add(Dropout(0.25))
