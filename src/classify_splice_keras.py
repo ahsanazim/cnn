@@ -70,7 +70,7 @@ model.fit(X_train, Y_train,validation_data=(X_test,Y_test),
 
 # 7. Evaluate model on test data
 score = model.evaluate(X_test, Y_test, verbose=1)
-print "score = " + str(score)
+print "\nscore = " + str(score)
 
 """
 debug output:

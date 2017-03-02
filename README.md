@@ -28,6 +28,35 @@ Epoch 10/10
 score = [0.23952163933957898, 0.94339622678996637]
 ```
 
+Secondary result w/ `batch size = 54`. Note the worse effect relative to above batch size of `32`. 
+
+```
+Train on 2872 samples, validate on 318 samples
+Epoch 1/10
+2872/2872 [==============================] - 66s - loss: 0.3415 - acc: 0.8611 - val_loss: 0.0984 - val_acc: 0.9560
+Epoch 2/10
+2872/2872 [==============================] - 65s - loss: 0.1168 - acc: 0.9624 - val_loss: 0.1222 - val_acc: 0.9465
+Epoch 3/10
+2872/2872 [==============================] - 64s - loss: 0.0724 - acc: 0.9777 - val_loss: 0.1890 - val_acc: 0.9277
+Epoch 4/10
+2872/2872 [==============================] - 65s - loss: 0.0402 - acc: 0.9871 - val_loss: 0.2028 - val_acc: 0.9340
+Epoch 5/10
+2872/2872 [==============================] - 65s - loss: 0.0230 - acc: 0.9930 - val_loss: 0.1948 - val_acc: 0.9403
+Epoch 6/10
+2872/2872 [==============================] - 64s - loss: 0.0201 - acc: 0.9948 - val_loss: 0.2568 - val_acc: 0.9245
+Epoch 7/10
+2872/2872 [==============================] - 70s - loss: 0.0095 - acc: 0.9972 - val_loss: 0.3410 - val_acc: 0.9214
+Epoch 8/10
+2872/2872 [==============================] - 71s - loss: 0.0171 - acc: 0.9944 - val_loss: 0.3200 - val_acc: 0.9308
+Epoch 9/10
+2872/2872 [==============================] - 67s - loss: 0.0150 - acc: 0.9948 - val_loss: 0.1724 - val_acc: 0.9434
+Epoch 10/10
+2872/2872 [==============================] - 72s - loss: 0.0091 - acc: 0.9969 - val_loss: 0.2535 - val_acc: 0.9403
+318/318 [==============================] - 2s
+
+score = [0.25348289227757437, 0.94025156970294022]
+```
+
 Good links:
 - on overfitting and train vs test accuracy: https://github.com/fchollet/keras/issues/877
 - on evaluating your algorithm: http://machinelearningmastery.com/evaluate-performance-deep-learning-models-keras/
