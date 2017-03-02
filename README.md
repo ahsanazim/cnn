@@ -1,6 +1,6 @@
 # Convolutional Neural Networks for DNA Sequence Classification
 
-NOTE that this readme is currently a mish-mash of results and links of interest. It shall be cleaned up in the future. 
+***NOTE that this readme is currently a mish-mash of results and links of interest. It shall be cleaned up in the future.***
 
 ***Update***: Apparently using one convolutional layer provides a record highest accuracy: 
 ```
