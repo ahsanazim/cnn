@@ -11,12 +11,14 @@ def load_data(fname):
         line_arr = line_no_nwline.split(",")
         label = line_arr[0]
         seq = line_arr[2]
-        ##### ONLY FOR SPLICE DATA SET
-        seq = seq.replace("N","A")
+        # sequence cleaning
+        seq = seq.upper()    # b/c rep matrix built on uppercase
+        seq = seq.replace("\t","")      # present in promoter 
+        seq = seq.replace("N","A")  # undetermined nucleotides in splice
         seq = seq.replace("D","G")
         seq = seq.replace("S","C")
         seq = seq.replace("R","G")
-        ##############
+        #####
         labels.append(label)
         seqs.append(seq)
     f.close()
