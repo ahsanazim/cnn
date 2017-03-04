@@ -2,9 +2,9 @@
 from seq_reader import load_data        # parsing data file
 from one_hot_rep import get_rep_mats, conv_labels   # converting to correct format
 
+from sklearn.model_selection import StratifiedKFold     # cross validation
+
 import numpy as np
-seed = 123
-np.random.seed(seed)  # for reproducibility
 
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Activation, Flatten
@@ -12,6 +12,9 @@ from keras.layers import Convolution2D, MaxPooling2D
 from keras.utils import np_utils
 from keras.datasets import mnist
 #############################################
+
+seed = 123          # for reproducibility
+np.random.seed(seed)
 
 # 1. Load data into train and test sets
 X, y = load_data("../data/splice.data.txt")   # sequences, labels
@@ -26,7 +29,10 @@ Y = np.asarray(y)
 # define 10-fold cross validation test harness
 kfold = StratifiedKFold(n_splits=10, shuffle=True, random_state=seed)
 scores = []
+
 for train, test in kfold.split(X, Y):
+    print "====> FOLD [" + str(len(scores) + 1) + "]"
+
     # 2. Preprocess input data
     X_train = X[train].reshape(X[train].shape[0], 1,58, 64)
     X_test = X[test].reshape(X[test].shape[0], 1,58, 64)
@@ -41,8 +47,6 @@ for train, test in kfold.split(X, Y):
     model = Sequential()
 
     model.add(Convolution2D(54, 3, 3, activation='relu', input_shape=(1, 58, 64)))
-    print model.output_shape
-    #model.add(Convolution2D(54, 3, 3, activation='relu'))      # commented out -- hence only one convolutional layer
     print model.output_shape
     model.add(MaxPooling2D(pool_size=(2,2)))
     model.add(Dropout(0.25))
@@ -63,10 +67,11 @@ for train, test in kfold.split(X, Y):
 
     # 7. Evaluate model on test data
     score = model.evaluate(X_test, Y_test, verbose=1)
-    scores.append(score)
+    scores.append(score[1]*100)     # accuracies only
     print "\nscore = " + str(score)
 
-print("%.2f%% (+/- %.2f%%)" % (numpy.mean(scores), numpy.std(scores)))
+# output aggregate results
+print("min: %.2f%%, average: %.2f%% (+/- %.2f%%), max: %.2f%%" % (np.min(scores), np.mean(scores), np.std(scores), np.max(scores)))
 
 
 """

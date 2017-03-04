@@ -2,7 +2,10 @@
 
 ***NOTE that this readme is currently a mish-mash of results and links of interest. It shall be cleaned up in the future.***
 
-***Update***: Apparently using one convolutional layer provides a record highest accuracy: 
+***UPDATE***: The new cross validation branch has yielded following results:
+min: 93.71%, average: 95.70% (+/- 1.21%), max: 97.81%
+
+Apparently using one convolutional layer provides a record highest accuracy: 
 ```
 Train on 2872 samples, validate on 318 samples
 Epoch 1/10
